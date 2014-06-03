@@ -6,7 +6,6 @@ println("Hello,world")
 var myVariable = 42
 myVariable = 50
 let myConstant = 42
-
 ```
 
 ```swift
@@ -19,7 +18,6 @@ let explicitDouble:Double = 70
 let label = "The width is"
 let width = 94
 let widthLabel = label + String(width)
-
 ```
 
 ```swift
@@ -37,7 +35,6 @@ var occupations = [
 	"Kaylee": "Mechanic"
 ]
 occupations["Jayne"] = "Public Relations"
-
 ```
 
 ```swift
@@ -60,7 +57,6 @@ for score in individualScores {
 	}
 }
 teamScore
-
 ```
 
 ```swift
@@ -72,7 +68,6 @@ var greeting = "Hello!"
 if let name = optionalName {
 	greeting = "Hello, \(name)"
 }
-
 ```
 
 ```swift
@@ -87,7 +82,6 @@ case let x where x.x.hasSuffix("pepper")
 default:
 	let vegetableComment = "Everything tastes good in soup."
 }
-
 ```
 
 ```swift
@@ -105,7 +99,6 @@ for (kind,numbers) in interestingNumbers {
 	}
 }
 largest
-
 ```
 
 ```swift
@@ -120,7 +113,6 @@ do {
 	m = m*2
 } while m < 100
 m
-
 ```
 
 ```swift
@@ -135,7 +127,6 @@ for var i = 0; i < 3; ++i{
 	secondForLoop += 1
 }
 secondForLoop
-
 ```
 
 ```swift
@@ -143,7 +134,6 @@ func greet(name:String,day:String) -> String {
 	return "Hello \(name),today is \(day)."
 }
 greet("Bob","Tuesday")
-
 ```
 
 ```swift
@@ -151,7 +141,6 @@ func getGasPrices() -> (Double,Double,Double) {
 	return (3.59, 3.69, 3.79)
 }
 getGasPrices()
-
 ```
 
 ```swift
@@ -164,7 +153,6 @@ func sumOf(numbers: Int...) -> Int {
 }
 sumOf()
 sumOf(42,597,12)
-
 ```
 
 ```swift
@@ -177,7 +165,6 @@ func returnFifteen() -> Int {
 	return y
 }
 returnFifteen()
-
 ```
 
 ```swift
