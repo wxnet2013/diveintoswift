@@ -326,3 +326,169 @@ counter.incrementBy(2,numberOfTimes: 7)
 let optionalSquare: Square? = Square(sideLength: 2.5,name: "optional square")
 let sideLength = optionalSquare?.sideLength
 ```
+### 枚举和结构
+```swift
+enum Rank: Int {
+	case Ace = 1
+	case Two, Three, Four, Five, six, seven, Eight, Nine, Ten
+	case Jack, Queen, King
+	func simpleDescription() -> String {
+		switch self {
+			case .Ace:
+				return "ace"
+			case .Jack:
+				return "jack"
+			case .Queen:
+				return "queen"
+			case .King:
+				return "king"
+			default:
+				return String(self.toRaw())
+		}
+	}
+}
+let ace = Rank.Ace
+let aceRawValue = ace.toRaw()
+```
+
+```swift
+if let convertedRank = Rank.fromRaw(3) {
+	let threeDescription = convertedRank.simpleDescription()
+}
+```
+
+```swift
+enum Suit {
+	case Spades, Hearts, Diamonds, Clubs
+	func simpleDescription() -> String {
+		switch self {
+			case .Spades:
+				return "spades"
+			case .Hearts:
+				return "hearts"
+			case .Diamonds:
+				return "diamonds"
+			case .Clubs:
+				return "clubs"
+		}
+	}
+}
+let hearts = Suit.Hearts
+let heartsDescription = hearts.simpleDescription()
+```
+
+```swift
+struct Card {
+	var rank: Rank
+	var suit: Suit
+	func simpleDescription() -> String {
+		return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"
+	}
+}
+let threeOfSpades = Card(rank: .Three, suit: .Spades)
+let threeOfSpadesDescription = threeOfSpades.simpleDescription()
+```
+
+```swift
+enum ServerResponse {
+	case Result(String, String)
+	case Error(String)
+}
+let success = ServerResponse.Result("6:00 am", "8:09 pm")
+let failure = ServerResponse.Error("Out of cheese.")
+
+switch success {
+	case let .Result(sunrise, sunset):
+		let serverResponse = "Sunrise is at \(sunrise) and sunset is at \(sunset)."
+	case let .Error(error):
+		let serverResponse = "Failure... \(error)"
+	
+}
+```
+### 协议和扩展
+
+```swift
+protocol ExampleProtocol {
+	var simpleDescription:String { get }
+	mutating func adjust()
+}
+```
+
+```swift
+class SimpleClass:  ExampleProtocol {
+	var simpleDescription: string = "A very simple class."
+	var anotherProperty: Int = 69105
+	func adjust() {
+		simpleDescription += " Now 100% adjusted."
+	}
+}
+var a = SimpleClass()
+a.adjust()
+let aDescription = a.simpleDescription
+
+struct SimpleStructure:  ExampleProtocol {
+	var simpleDescription: String = "A simple structure"
+	mutating func adjust() {
+		simpleDescription += " (adjusted)"
+	}
+}
+var b = SimpleStructure()
+b.adjust()
+let bDescription = b.simpleDescription
+```
+
+```swift
+extension Int: ExampleProtocol {
+	var simpleDescription: String {
+		return "The number \(self)"
+	}
+	mutating func adjust() {
+		self += 42
+	}
+}
+7.simpleDescription
+```
+
+```swift
+let protocolValue: ExampleProtocol = a
+protocolValue.simpleDescription
+// protocolValue.anotherProperty // Uncomment to see the error
+```
+### 泛型
+```swift
+func repeat<ItemType>(item: ItemType, times: Int) -> ItemType[] {
+	var result = ItemType[]()
+	fot i in 0..times {
+		result += item
+	}
+	return result
+}
+repeat("knock",4)
+```
+
+```swift
+// Reimplement the Swift standard library's optional type 
+enum OptionalValue<T> {
+	case None
+	case Some(T)
+}
+var possibleInteger: OptionalValue<T> = .None
+possibleInteger = .some(100)
+```
+
+```swift
+func anyCommonElements <T, U where T: Sequence, U: Sequence, 
+	T.GeneratorType.Element: Equatable,
+	T.GeneratorType.Element == U.GeneratorType.Element> (lhs:
+	T, rhs: U) -> Bool {
+		for lhsItem in lhs {
+			for rhsItem in rhs {
+				if lhsItem == rhsItem {
+					return true
+				}
+			}
+		}
+		return false
+}
+anyCommonElements([1, 2, 3], [3])
+```
