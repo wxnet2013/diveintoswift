@@ -1,7 +1,7 @@
 ```swift
 println("Hello,world")
 ```
-
+### 赋值
 ```swift
 var myVariable = 42
 myVariable = 50
@@ -45,7 +45,7 @@ let emptyDictionary = Dictionary<String,Float>()
 ```swift
 shoppingList = [] //Went shopping and bought everything
 ```
-
+### 流程控制
 ```swift
 let individualScores = [75,43,103,87,12]
 var teamScore = 0
@@ -128,7 +128,7 @@ for var i = 0; i < 3; ++i{
 }
 secondForLoop
 ```
-
+### 函数和闭包
 ```swift
 func greet(name:String,day:String) -> String {
 	return "Hello \(name),today is \(day)."
@@ -212,7 +212,7 @@ number in 3 * number
 ```swift
 sort([1 ,5 ,3 ,12 ,2]) {$0 > $1}
 ```
-
+### 对象和类
 ```swift
 class Shape {
 	var lessThanTen = 0
